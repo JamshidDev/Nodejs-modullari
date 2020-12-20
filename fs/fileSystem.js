@@ -1,5 +1,6 @@
 
 const fs = require('fs');  // Modulni chaqiramiz, bu modulni npm orqali yuklash shart emas.
+    const path = './test.text'; //faylni manzili...
 
 fs.readdir("../",(err, files)=>{ //readdir() funksiyasi berilgan pathdagi file va papkalarni qaytaradi...
 
@@ -53,3 +54,25 @@ fs.readFile("../server.js","utf8",(err, date)=>{  // readFile() funksiyasi pathd
 
 //     else console.log("Nushalandi");
 // })
+
+// fs.open(path,"r",(err,fd)=>{
+//     if (err) {console.log(`Quyidagi ${path} faylni ochishda xatolik yuz berdi --> ${err}`);}
+//     else {
+//         // o'qish
+//         // yozish
+//         console.log(fd);
+//         fs.close(fd,(err)=>{
+//             console.log("Fayl ypoildi");
+//         })
+//     }
+// })
+
+// fs.ststa()
+fs.stat(path,(err,stats)=>{
+    if(err) {console.log(err);}
+    else {
+        console.log(`fayl hajmi ${stats.size} bayt
+        ${stats.isDirectory()}
+        ${stats.isFile()}`);
+    }
+})
